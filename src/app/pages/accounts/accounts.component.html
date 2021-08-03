@@ -1,0 +1,41 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <div>
+                <h4>Accounts List</h4>
+            </div>
+            <br>
+            <div>
+                <!--Table-->
+                <div class="row">
+                    <div class="col">
+                        <table id="table">
+                            <tr>
+                                <th scope="col">Account Number</th>
+                                <th scope="col">Account Type</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            <!--looping through the accounts-->
+                            <tr *ngFor="let acc of AccountsList">
+                                <td>{{acc.accountNumber}}</td>
+                                <td>{{acc.type}}</td>
+                                <td>{{acc.balance | currency:'ZAR '}}</td>
+                                <td><button [disabled]="acc.disabled" class="{{acc.class}}" (click)="withdraw(acc.balance)">
+                                    Withdraw
+                                </button>
+                            </td>
+                            </tr>
+                        </table>
+
+                        <br>
+                        <div class="row">
+                            <div class="col"><strong>Balance</strong></div>
+                            <div class="col-4"><strong>{{totalBalance | currency:'ZAR '}}</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
